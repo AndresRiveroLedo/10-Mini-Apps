@@ -1,54 +1,113 @@
-const tasks = []; //almacenanos las diferentes tareas
-let time = 0; //cuenta regresiva
-let timer = null; 
-let timerBreak = null; //tiempo de descanso
-let current = null; //no dice la tarea actual que estamos realizando
+const tareas = [];
+let tiempo = 0;
+let temporizador = null;
+let tiempoMuerto = null;
+let evento = null;
+let estadoApp = "stop";
 
-const bAdd = document.querySelector("bAdd");
+const bAdd = document.querySelector("#bAdd");
 const itTask = document.querySelector("itTask");
 const form = document.querySelector("form");
 
-form.addEventListener('submit', e =>{
-    e.preventDefault(); //anulamos el funcionamiento nativo y no se enviará el formulario.
+realizarTareas();
+comenzarTemporizador();
 
-    if(itTask.value !== '' ){
-
-        //funcion para crear tarea
-        createTask(itTask.value);
-        itTask.value = '';
-        renderTasks();
-    }
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if(itTask.value !== "") {
+    crearTareas(itTask.value);
+    itTask.value = "";
+    realizarTareas();
+  }
 });
 
-//funcion para crear tareas
-function createTask(value){
-    const newTask = {
-        id: (Math.random() * 100).toString(36).slice(3),
-        title: value,
-        completed: false
-    };
+function crearTareas(valor){
+  const nuevaTarea = {
+    id: (Math.random() * 100).toString(36).slice(2),
+    titulo: valor,
+    completado: false,
+  };
 
-    //lo agregamos al arreglo
-    tasks.unshift(newTask)
+  tareas.unshift(nuevaTarea);
+
 }
 
-/*funcion para renderizar las tareas. 
-Esta funcion nos vas a permitir tomar cada una de las tareas task[...]
-y generar un html que al final voy a inyectar en un contenedor*/
-function renderTasks(){
-    const html = tasks.map(task =>{
-        return `
-            <div class="task">
-                <div class="completed">${
-                    task.completed 
-                    ? `<span class="done">Done</span>` 
-                    : `<button class="start-button" data-id="${task.id}">Start</button>`
-                }</div>
-                <div class="title">${task.title}</div>
-            </div>
-        `;
-    });
+function realizarTareas(){
+  const html = tareas.map((tarea) =>{
+    return `
+    <div class="task">
+    <div class="completed">${
+        tarea.completado
+        ? "<span class='done'>Done</span>"
+        : `<button class="start-button" data-id="${tarea.id}">Start</button></div>`
+    }
+        <div class="title">${tarea.titulo}</div>
+      </div>`;
+  });
 
-    const tasksContainer = document.querySelector("tasks");
-    tasksContainer.innerHTML = html.join('');
+  const contenedorTareas = document.querySelector("#tasks");
+  contenedorTareas.innerHTML = html.join("");
+
+  const inicioBotones = document.querySelectorAll(".task .start-button");
+  inicioBotones.forEach((boton) =>{
+    boton.addEventListener("click", () =>{
+      if(!timer){
+        presionarBoton(boton.getAttribute("data-id"));
+        boton.textContent = "In progress...";
+      }
+    });
+  });
+}
+
+function presionarBoton(id){
+  tiempo = 0.5 * 60;
+  evento = id;
+  const idTarea = tareas.findIndex((tarea) => tarea.id === id);
+  document.querySelector("#time #taskName").textContent = tareas[idTarea].title;
+  temporizador = introducirValor(() =>{
+   manipularTemporizador(id);
+  }, 1000);
+}
+
+function manipularTemporizador(id = null){
+  tiempo--;
+  comenzarTemporizador();
+  if(tiempo === 0){
+    marcarCompletado(id);
+    limpiarIntervalo(temporizador);
+    realizarTareas();
+    comenzarDescanso();
+  }
+}
+
+function marcarCompletado(id){
+  const idTarea = tareas.findIndex((tarea) => tarea.id === id);
+  tareas[idTarea].completado = true;
+}
+
+function comenzarDescanso(){
+  tiempo = 1* 60;
+  document.querySelector("#time #taskName").textContent = "Descanso";
+  tiempoMuerto = introducirValor(marcarTiempoMuerto, 1000);
+}
+
+function marcarTiempoMuerto(){
+  time--;
+  comenzarTemporizador();
+  if(time === 0){
+    limpiarIntervalo(tiempoMuerto);
+    evento = null;
+    document.querySelector("#time #taskName").textContent = "";
+    comenzarTemporizador();
+  }
+  
+}
+
+function comenzarTemporizador() {
+  const tiempoDiv = document.querySelector("#time #value");
+  const minutos = parseInt(tiempo / 60);
+  const segundos = parseInt(tiempo % 60);
+  tiempoDiv.textContent = `${minutos < 10 ? "0" : ""}${minutos}:${
+    segundos < 10 ? "0" : ""
+  }${segundos}`;
 }
