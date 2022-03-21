@@ -26,14 +26,14 @@ body{
     justify-content: center;
 }
 
-/*solo seleccionará campos de texto*/
+/*solo seleccionará los input tipos campos de texto*/
 input[type="text"]{
     padding: 10px;
     border: solid 1px #ccc;
     width: 300px;
 }
 
-/*solo seleccionará campos de contraseña*/
+/*solo seleccionará los input tipos campos de enviar*/
 button, input[type="submit"]{
     border: none;
     background-color: #003366;

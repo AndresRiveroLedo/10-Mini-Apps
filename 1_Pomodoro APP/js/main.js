@@ -6,8 +6,8 @@ let evento = null;
 let estadoApp = "stop";
 
 const bAdd = document.querySelector("#bAdd");
-const itTask = document.querySelector("itTask");
-const form = document.querySelector("form");
+const itTask = document.querySelector("#itTask");
+const form = document.querySelector("#form");
 
 realizarTareas();
 comenzarTemporizador();
@@ -51,7 +51,7 @@ function realizarTareas(){
   const inicioBotones = document.querySelectorAll(".task .start-button");
   inicioBotones.forEach((boton) =>{
     boton.addEventListener("click", () =>{
-      if(!timer){
+      if(!temporizador){
         presionarBoton(boton.getAttribute("data-id"));
         boton.textContent = "In progress...";
       }
@@ -63,8 +63,8 @@ function presionarBoton(id){
   tiempo = 0.5 * 60;
   evento = id;
   const idTarea = tareas.findIndex((tarea) => tarea.id === id);
-  document.querySelector("#time #taskName").textContent = tareas[idTarea].title;
-  temporizador = introducirValor(() =>{
+  document.querySelector("#time #taskName").textContent = tareas[idTarea].titulo;
+  temporizador = setInterval(() =>{
    manipularTemporizador(id);
   }, 1000);
 }
@@ -74,7 +74,7 @@ function manipularTemporizador(id = null){
   comenzarTemporizador();
   if(tiempo === 0){
     marcarCompletado(id);
-    limpiarIntervalo(temporizador);
+    clearInterval(temporizador);
     realizarTareas();
     comenzarDescanso();
   }
@@ -86,21 +86,21 @@ function marcarCompletado(id){
 }
 
 function comenzarDescanso(){
-  tiempo = 1* 60;
-  document.querySelector("#time #taskName").textContent = "Descanso";
-  tiempoMuerto = introducirValor(marcarTiempoMuerto, 1000);
+  tiempo = 1 * 60;
+  document.querySelector("#time #taskName").textContent = "Break";
+  tiempoMuerto = setInterval(marcarTiempoMuerto, 1000);
 }
 
 function marcarTiempoMuerto(){
-  time--;
+  tiempo--;
   comenzarTemporizador();
-  if(time === 0){
-    limpiarIntervalo(tiempoMuerto);
+  if(tiempo === 0){
+    clearInterval(tiempoMuerto);
     evento = null;
     document.querySelector("#time #taskName").textContent = "";
     comenzarTemporizador();
   }
-  
+  set
 }
 
 function comenzarTemporizador() {
