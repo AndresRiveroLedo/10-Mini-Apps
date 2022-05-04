@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Una simple App para calcular descuentos">
+    <meta name="robots" content="index, follow"/>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;700&display=swap" >
+    <title>Porcentajes y Descuentos</title>
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="logo" >
+        <h1>Porcentajes y Descuentos</h1>
+    </header>
+
+    <p class="card-container__title">Calcula el descuento</p>
+    <section class="card-container-calculate">
+        <form class="card-container__form">
+            <input class="card-container__form--input-price" id="inputPrice" type="number" placeholder="Escribe el precio de tu producto">
+            <input class="card-container__form--input-discount" id="inputDiscount" type="number" placeholder="Escribe el descuento de tu producto">
+            <div>
+                <label for="cupons">Cupones: </label>
+                    <select class="cupons" name="Cupons" id="cupons">
+                        <option value="0">No tengo</option>
+                        <option value="10">-10%</option>
+                        <option value="25">-25%</option>
+                        <option value="50">-50%</option>
+                    </select>
+            </div>
+              <button type="button" onclick="onClickButtonPriceDiscount()">Calcular</button>
+        </form>
+    </section>
+
+    <section class="card-container-product">
+        <article class="card-container-product__item">
+            <div class="card-container-product__item--p1">
+                <h3 class="card-container-product__item--title">Producto </h3>
+                <div class="card__total-discont">
+                    <p class="total__discont">Total desc:<p> 
+                    <p id="displayPercentageDiscount">-00%</p>
+                </div>
+            </div>
+           
+            <div class="card-container-product__item--container-imagen">
+                <img src="img/reloj.png" alt="reloj">
+            </div>
+           
+            <div class="card-container-product__item--p2">
+                <p id="displayPrice"  >$00000</p>
+                <p id="displayDiscount">$0000</p>
+            </div>
+        </article>
+        <p class="displayValueDiscount" id="displayValueDiscount">Esto es lo que haz ahorrado: </p>
+    </section>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>

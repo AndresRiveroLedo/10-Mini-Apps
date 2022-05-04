@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Productos</title>
+    <!-- BOOTSTRAP CDn-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+    <!--NAVIGATION-->
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a href="/" class="navbar-brand">App Productos </a>
+    
+        </nav>
+    </header>
+    <!--Aplicacion-->
+    <main class="container">
+        <section id="App" class="row pt-5">
+            <section class="col-md-4">
+                <article class="card">
+                    <div class="card-header">
+                        <h4>Añadir un Producto</h4>
+                    </div>
+                    <form id="product-form" class="card-body">
+                        <div class="form-group">
+                            <input type="text" id="name" class="form-control" placeholder="Nombre del Producto"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" step="0.01" id="price" class="form-control" placeholder="Precio del Producto">
+                        </div>
+                        <br>
+                        <div class="form-group"> 
+                            <input type="number" id="year" class="form-control" min="1900" value="2018" max="2022" placeholder="Año del Producto">
+                        </div>
+                        <hr>
+                        <input type="submit" value="Guardar" class="btn btn-primary btn-lg">
+                    </form>
+                </article>
+            </section>
+
+            <section class="col-md-8" id="product-list">
+                
+            </section>
+
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./App.js" type="module"></script>
+</body>
+</html>
