@@ -10,11 +10,19 @@ import { TeacherStudent } from "./models/TeacherStudent.js";
 import {UI} from "./UI.js";
 import {Producto} from "./models/Producto.js"
 
+const btnFreeStudent = document.querySelector(".btnFreeStudent");
 
+window.addEventListener('DOMContentLoaded', (e) =>{
+   
+    document.getElementById("App").style.visibility = "hidden";
+    btnFreeStudent.innerHTML = `
+    <a href="#" class="btn btn-danger" name="freeSubscribe">subscribe</a>
+    `;
+});
 
-window.addEventListener('DOMContentLoaded', () =>{
-   // document.getElementById("App").style.visibility = "hidden";
-
+btnFreeStudent.addEventListener("click", (e)=>{
+    const ui = new UI();
+    ui.showCardStudent(e.target);
 });
 
 

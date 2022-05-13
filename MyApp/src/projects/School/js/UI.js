@@ -35,6 +35,13 @@ export class UI{
         }
     }
 
+    showCardStudent(element){
+        if(element.name ==="freeSubscribe"){
+            document.getElementById("App").style.visibility = "visible";
+            this.showMessage("The card is visible", "success");
+        }
+    }
+
     showMessage(message, classCSS){
         const section = document.createElement("section");
         section.className = `alert alert-${classCSS} mt-2`;
