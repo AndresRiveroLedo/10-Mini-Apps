@@ -13,7 +13,7 @@ document
     anio = document.getElementById("year").value;
     
     //Creamos un objeto prodcuto
-    const producto = new Producto(nombre, precio, anio);
+    const producto = new Producto({nombre, precio, anio});
     
     //Creamos una instancia
     const ui = new UI();

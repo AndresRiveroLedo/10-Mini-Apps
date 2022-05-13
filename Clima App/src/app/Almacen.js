@@ -3,12 +3,12 @@ export class Almacen {
     
     constructor(){
         this.ciudad;
-        this.ciudadAutamtica = 'London';
+        this.ciudadAutomatica = 'London';
     }
 
     getDatosLocalizacion(){
         if(localStorage.getItem('city') === null){
-            this.ciudad = this.ciudadAutamtica;
+            this.ciudad = this.ciudadAutomatica;
         }else{
             this.ciudad = localStorage.getItem('city');
         }

@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    paddin:0;
+}
+
+html{
+    font-size: 65.2%;
+    font-family:'Courier New', Courier, monospace
+}
+
+body{
+    background: #67B26F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons button { 
+    background-color: #04AA6D; /* Green background */
+    border: 0; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    margin: 30px;
+  }
+  
+  .buttons button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .buttons:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Add a background color on hover */
+  .buttons button:hover {
+    background-color: #ccf4cd;
+    color: black;
+  }

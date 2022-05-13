@@ -7,7 +7,7 @@ export class Tiempo{
     }
 
     async getTiempo(){
-        const URI = `https://api.openweathermap.org/geo/1.0/direct?q=${this.ciudad}&limit=5&appid=${this.apiKey}&units=metric`
+        const URI = `https://api.openweathermap.org/data/2.5/weather?q=${this.ciudad}&appid=${this.apiKey}`
         const respuesta = await fetch(URI); //fetch(): metodo que nos permita hacer peticiones.
         const datos = await JSON.stringify(respuesta);
         return JSON.parse(datos);

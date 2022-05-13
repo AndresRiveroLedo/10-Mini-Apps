@@ -17,7 +17,7 @@ export class UI{
      */
     actualizar(weather){
         console.log(weather);
-        this.localizacion.textContent = weather.name + ' / ' + weather.sys.country;
+        this.localizacion.textContent = weather.name + ' / ' + weather.id;
         this.desc.textContent = weather.weather[0]['description'];
         this.string.textContent = weather.main.temp + ' °C';
         this.humedad.textContent = 'Humedad: ' + weather.main.humidity + '°C';
