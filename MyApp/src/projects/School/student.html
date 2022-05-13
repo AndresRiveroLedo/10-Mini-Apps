@@ -71,41 +71,65 @@
               
             </article>
           <article class="position-absolute top-20 start-50 translate-middle-x">
-            <p class="badge fs-1 bg-success text-wrap text-uppercase animate__animated animate__bounceInDown" style="width: 30rem;">Subscription:<br> Basic Student</p>
+            <p class="badge fs-1 bg-success text-wrap text-uppercase animate__animated animate__bounceInDown" style="width: 30rem;">Subscription:<br> Basic Student<br><span class="btnBasicStudent"></p>
         </article>
         <article class="position-absolute top-20 end-0">
-          <p class="badge fs-1 bg-success text-wrap text-uppercase animate__animated animate__bounceInDown" style="width: 30rem;">Subscription:<br> Expert Student</p>
+          <p class="badge fs-1 bg-success text-wrap text-uppercase animate__animated animate__bounceInDown" style="width: 30rem;">Subscription:<br> Expert Student<br><span class="btnExpertStudent"></span></p>
       </article>
       </section>
-      
+        <!--Free Student-->
       <section id="App" class="row pt-5">
-          <section class="col-md-4 position-absolute top-50 start-0 translate-middle-y">
-              <article class="card">
-                  <div class="card-header">
-                      <h4>Add Free Student</h4>
+        <section id="appFree" class="col-md-4 position-absolute top-50 start-0 translate-middle-y">
+          <article class="card">
+              <div class="card-header">
+                  <h4>Add Free Student</h4>
+              </div>
+              <form id="student-form" class="card-body">
+                  <div class="form-group">
+                      <input type="text" id="name" class="form-control" placeholder="Name"/>
                   </div>
-                  <form id="student-form" class="card-body">
-                      <div class="form-group">
-                          <input type="text" id="name" class="form-control" placeholder="Nombre del Producto"/>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                          <input type="text" id="surname" class="form-control" placeholder="Surname">
-                      </div>
-                      <br>
-                      <div class="form-group"> 
-                          <input type="email" class="form-control"  id="email" placeholder="Email">
-                      </div>
-                      <hr>
-                      <input type="submit" value="Guardar" class="btn btn-primary btn-lg">
-                  </form>
-              </article>
+                  <br>
+                  <div class="form-group">
+                      <input type="text" id="surname" class="form-control" placeholder="Surname">
+                  </div>
+                  <br>
+                  <div class="form-group"> 
+                      <input type="email" class="form-control"  id="email" placeholder="Email">
+                  </div>
+                  <hr>
+                  <input type="submit" value="Guardar" class="btn btn-primary btn-lg">
+              </form>
+          </article>
+        </section>
+          <!--Basic Student-->
+          <section id="appBasic" class="col-md-4 position-absolute top-50 start-0 translate-middle-y">
+            <article class="card" >
+              <div class="card-header">
+                  <h4>Add Basic Student</h4>
+              </div>
+              <form id="basic-form" class="card-body">
+                <div class="form-group">
+                  <input type="text" id="nameBasic" class="form-control" placeholder="Name">
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" id="surnameBasic" class="form-control" placeholder="Surname">
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="email" id="emailBasic" class="form-control" placeholder="Email">
+                </div>
+                <br>
+                <hr>
+                <input type="submit" value="Añadir" class="btn btn-primary btn-lg">
+              </form>
+            </article>
           </section>
-          
+        </section>
 
-          <section class="col-md-8 position-absolute top-50 end-0 translate-middle-y" id="student-list">
+        <section class="col-md-8 position-absolute top-50 end-0 translate-middle-y" id="student-list">
               
-          </section>
+        </section>
           
       </section>
       <section id="message" class="col-md-12 text-center position-absolute bottom-0 start-50 translate-middle">

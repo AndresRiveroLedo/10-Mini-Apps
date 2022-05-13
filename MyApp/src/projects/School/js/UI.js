@@ -36,9 +36,26 @@ export class UI{
     }
 
     showCardStudent(element){
-        if(element.name ==="freeSubscribe"){
-            document.getElementById("App").style.visibility = "visible";
-            this.showMessage("The card is visible", "success");
+        switch(element.name){
+            case "freeSubscribe":
+                document.getElementById("appFree").style.visibility = "visible";
+                document.getElementById("appBasic").style.visibility = "hidden";
+                this.showMessage("The Card Free Subscribre is visible", "success");
+                break;
+            case "basicSubscribe":
+                document.getElementById("appFree").style.visibility = "hidden";
+                document.getElementById("appBasic").style.visibility = "visible";
+                this.showMessage("The Card Basic Subscribre is visible", "success");
+                break;
+            case "expertSubscribe":
+                document.getElementById("appFree").style.visibility = "hidden";
+                document.getElementById("appBasic").style.visibility = "hidden";
+                this.showMessage("The Card Expert Subscribre is visible", "success");
+                break;
+            default:
+                this.showMessage("Impossible add the card", "danger");
+
+
         }
     }
 
@@ -62,57 +79,3 @@ export class UI{
     }
 
 }
-/*
-    addStudent(student){
-        const listStudent = document.getElementById("student-list");
-
-        const element = document.createElement("section");
-        element.innerHTML=`
-        <section class="card text-center mb-4">
-            <section class="card-body">
-                <strong>Producto</strong>: ${student.name} -
-                <strong>Precio</strong>: ${student.surname} 
-                <a href="#" class="btn btn-danger" name="delete">Delete</a>
-            </section>
-        </section>
-        
-        `;
-
-        listStudent.appendChild(element);
-    }
-
-
-    //Reseteamos los valores del formulario
-    resetForm(){
-        document.getElementById("student-form").reset();
-    }
-
-    eraseStudent(element){
-        if(element.name === "delete"){
-            element.parentElement.parentElement.remove();
-            this.showMessage("The student has been deleted")
-        }
-    }
-
-    showMessage(message, classCSS){
-        const section = document.createElement("section");
-        section.className = `alert alert-${classCSS} mt-2`;
-        section.appendChild(document.createTextNode(message));
-
-        //show in the DOM
-        const contenedor = document.querySelector(".container")
-        const app = document.getElementById("#App");
-
-        //insert Message in the UI
-        contenedor.insertBefore(section, app);
-
-        //Borrar el mensaje después de 3 segundos
-        setTimeout(function(){
-            document.querySelector(".alert").remove();
-        }, 1000);
-
-    }
-
-}
-
-*/
