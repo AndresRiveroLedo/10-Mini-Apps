@@ -14,11 +14,13 @@ const ui = new UI();
 const btnFreeStudent = document.querySelector(".btnFreeStudent");
 const btnBasicStudent = document.querySelector(".btnBasicStudent");
 const btnExpertStudent = document.querySelector(".btnExpertStudent");
+const btnDelete = document.querySelector("#btnDelete");
 
 window.addEventListener('DOMContentLoaded', (e) =>{
    //ocultamos la tarjeta del formulario
     document.getElementById("appFree").style.visibility = "hidden";
-    document.getElementById("appBasic").style.visibility = "hidden"
+    document.getElementById("appBasic").style.visibility = "hidden";
+    document.getElementById("appExpert").style.visibility = "hidden"
 
     btnFreeStudent.innerHTML = `
     <a href="#" class="btn btn-danger" name="freeSubscribe">subscribe</a>
@@ -76,7 +78,7 @@ document
 });
 
 //Basic Student
-document.getElementById("basic-form").addEventListener("submit", function(e){
+document.getElementById("basic-form").addEventListener("submit", (e)=>{
 
     e.preventDefault();
 
@@ -99,11 +101,44 @@ document.getElementById("basic-form").addEventListener("submit", function(e){
 });
 
 //Expert Student
+document.getElementById("expert-form").addEventListener("submit", function(e){
 
+    e.preventDefault();
+     //tomamos los valores del formulario
+     const name = document.getElementById("nameExpert").value;
+     const surname = document.getElementById("surnameExpert").value;
+     const email = document.getElementById("emailExpert").value;
+
+     //Creamos el objeto studentBasic
+    const studentExpert= new ExpertStudent({name, surname, email});
+
+    if(name === "" || surname === "" || email === ""){
+        return ui.showMessage("Please, fill in all the fields", "danger")
+     }
+
+     //Guardamos el producto
+    ui.addStudent(studentExpert);
+    ui.showMessage("Student successfully added", "success");
+    ui.resetForm();
+
+})
+
+
+
+//boton rojo borrar alumno
 document.getElementById("student-list").addEventListener("click", (e) =>{
 
     ui.deleteStudent(e.target);
     e.preventDefault();
+});
+
+//boton borrar card
+btnDelete.addEventListener("click", e =>{
+   //ocultamos la tarjeta del formulario
+    document.getElementById("appFree").style.visibility = "hidden";
+    document.getElementById("appBasic").style.visibility = "hidden";
+    document.getElementById("appExpert").style.visibility = "hidden"    
+
 });
 
 

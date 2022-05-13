@@ -40,14 +40,17 @@ export class UI{
             case "freeSubscribe":
                 document.getElementById("appFree").style.visibility = "visible";
                 document.getElementById("appBasic").style.visibility = "hidden";
+                document.getElementById("appExpert").style.visibility = "hidden"
                 this.showMessage("The Card Free Subscribre is visible", "success");
                 break;
             case "basicSubscribe":
                 document.getElementById("appFree").style.visibility = "hidden";
+                document.getElementById("appExpert").style.visibility = "hidden"
                 document.getElementById("appBasic").style.visibility = "visible";
                 this.showMessage("The Card Basic Subscribre is visible", "success");
                 break;
             case "expertSubscribe":
+                document.getElementById("appExpert").style.visibility = "visible"
                 document.getElementById("appFree").style.visibility = "hidden";
                 document.getElementById("appBasic").style.visibility = "hidden";
                 this.showMessage("The Card Expert Subscribre is visible", "success");
